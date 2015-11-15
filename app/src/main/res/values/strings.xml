@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">HelloWorld</string>
+    <string name="app_name">Timetable UoB</string>
+    <string name="Luni">Monday</string>
+    <string name="Marti">Tuesday</string>
+    <string name="Miercuri">Wednesday</string>
+    <string name="Joi">Thursday</string>
+    <string name="Vineri">Friday</string>
 </resources>
