@@ -2,6 +2,7 @@ package alexr.helloworld;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -37,7 +38,7 @@ public class Ore extends AppCompatActivity {
                 {"UG04","UG04","","Mechanical G31","","","",""},
                 {"","","132","","","","??","Learning UG05"},
                 {"Haworth 101","Arts LT02","UNIH G06","","","UG04","UG04","Poynting"},
-                {"w7-9 Haworth101\nw10-11 - EDUC 135","UG04","UG04","Mechanical G31","UG04","",""}
+                {"w7-9 Haworth101\nw10-11 - EDUC 135","","UG04","UG04","Mechanical G31","UG04","",""}
         };
         final String[] locatii = toateLocatiile[day];
 
@@ -50,109 +51,28 @@ public class Ore extends AppCompatActivity {
         Button fifteen = (Button)findViewById(R.id.button15);
         Button sixteen = (Button)findViewById(R.id.button16);
 
-        nine.setText(materii[0]);
-        ten.setText(materii[1]);
-        eleven.setText(materii[2]);
-        twelve.setText(materii[3]);
-        thirteen.setText(materii[4]);
-        fourteen.setText(materii[5]);
-        fifteen.setText(materii[6]);
-        sixteen.setText(materii[7]);
-
-
-
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
 
-        if(hour==9)
-            nine.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==10)
-            ten.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==11)
-            eleven.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==12)
-            twelve.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==13)
-            thirteen.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==14)
-            fourteen.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==15)
-            fifteen.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-        else if(hour==16)
-            sixteen.setBackgroundColor(ContextCompat.getColor(this, R.color.dayColor));
-
-        nine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[0]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[0], Toast.LENGTH_SHORT);
-                    toast.show();
+        Button[] buttons = {nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen};
+        int count = 0;
+        for(Button i:buttons) {
+            i.setText(materii[count]);
+            if (i.getText() == "Optional workshop" || i.getText()=="FC Tutorial 1" || i.getText()=="FC Tutorial 2")
+                i.setTextColor(Color.GRAY);
+            if(hour==count+9)
+                i.setBackgroundColor(ContextCompat.getColor(this,R.color.dayColor));
+            final int countt = count;
+            i.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(locatii[countt]!="") {
+                        Toast toast = Toast.makeText(getApplicationContext(), locatii[countt], Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
-            }
-        });
-        ten.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[1]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[1], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        eleven.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[2]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[2], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        twelve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[3]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[3], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        thirteen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[4]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[4], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        fourteen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[5]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[5], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        fifteen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[6]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[6], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-        sixteen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(locatii[7]!="") {
-                    Toast toast = Toast.makeText(getApplicationContext(), locatii[7], Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
-
+            });
+            count++;
+        }
     }
 }
