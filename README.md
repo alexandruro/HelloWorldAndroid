@@ -8,5 +8,5 @@ The main screen of the app shows the days of the week, the current day being hig
 Pressing on one of them shows the corresponding timetable, where the current time interval is highlighted and pressing on a lecture shows the location of it.
 
 ### Future updates
-I am planning on making the app read the timetable from an external file.
-A nice feature would also be to implement an interface for editing the timetable inside the app.
+* I am planning on making the app read the timetable from an external file.
+* A nice feature would also be to implement an interface for editing the timetable inside the app.
